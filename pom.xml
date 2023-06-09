@@ -31,16 +31,16 @@
 				<extensions>true</extensions>
 				<configuration>
 					<cloudHubDeployment>
-					<uri>https://anypoint.mulesoft.com</uri>
-					<muleVersion>4.4.0</muleVersion>
-					<username>ckunnur</username>
-					<password>Indi@202345</password>
-					<applicationName>mule-cicd-poc</applicationName>
-					<environment>Sandbox</environment>
-					<workers>1</workers>
-					<workerType>Micro</workerType>
-					<objectStoreV2>true</objectStoreV2>
-				</cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<muleVersion>4.4.0</muleVersion>
+						<username>ckunnur</username>
+						<password>Indi@202345</password>
+						<applicationName>mule-cicd-poc</applicationName>
+						<environment>Sandbox</environment>
+						<workers>1</workers>
+						<workerType>Micro</workerType>
+						<objectStoreV2>true</objectStoreV2>
+					</cloudHubDeployment>
 				</configuration>
 			</plugin>
 		</plugins>
