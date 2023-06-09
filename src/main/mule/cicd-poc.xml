@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="80e0d926-261b-4475-97a0-6f6b026d35fe" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="cicd-pocFlow" doc:id="81ae2389-31f9-404a-92ff-6ae5a4dded6d" >
+		<http:listener doc:name="Listener" doc:id="c80c5fd5-fd15-47c0-962e-c1b7d1b5ed06" config-ref="HTTP_Listener_config" path="/cicdpoc"/>
+		<logger level="INFO" doc:name="Logger" doc:id="12324daf-c189-4de6-92a9-0494c977ac10" message="started mule cicd poc"/>
+		<ee:transform doc:name="Transform Message" doc:id="e7f716ca-e822-4194-915b-9664395a2d78" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+{
+	"Current_Time" : now() as String {format: "yyyy-mm-dd T hh:mm:ss"},
+	"timezone" : "IST"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="90562128-4767-4e86-94a7-8b314800ed93" message="#[payload]"/>
+	</flow>
+</mule>
