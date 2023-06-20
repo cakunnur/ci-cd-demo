@@ -17,7 +17,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 output application/java
 ---
 {
-	"Current_Time" : now() as String {format: "yyyy-mm-dd T hh:mm:ss"},
+	"Current_Time" : now() as String {format: "yyyy-mm-dd-hh:mm:ss"},
 	"timezone" : "IST"
 }]]></ee:set-payload>
 			</ee:message>
